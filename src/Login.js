@@ -9,48 +9,28 @@ function   Login(){
 
     const[email,setemail]=useState("");
     const[password,setpassword]=useState("");
-
-
     const navigate = useNavigate();
 
-    const HandleSubmit=async(e)=>{
-        e.preventDefault();
-        if(!email|| !password){
-            alert("Insert Login Credientials ");
-            return;
+    const login = async(e)=>{
+            e.preventDefault();
+        console.log("Sending login request");
+        const response = await axios.post("http://localhost:8082/login",
+            {email:email, password:password}
+        )
+        console.log("the login response is: ",  response.data);
+        if(response.data.status === "00" && response.data.role ==="Employer"){
+            navigate("/EmployerDashboard");
         }
-       
-
-        // API
-        try {
-          console.log("sending login request")
-    const response =await axios.post( "http://localhost:8082/login",
-      { email, password }
-    );
-    console.log(response.data);
-    if(response.data.status=="02"){
-        const role = response.data.user.role;
-    localStorage.setItem(
-      "user",
-      JSON.stringify(response.data.user)
-    );
-    alert("Login successfuly")
-
-    
-    if (role === "admin") {
-      navigate("/AdminDashboard");
-    } else if (role === "employer") {
-      navigate("/EmployerDashboard");
-    } else {
-      navigate("/JobseekerDashboard");
-    }
-    }
-    else{
-      alert(response.data.message);
-    }
-  } catch (err) {
-    alert("Login error");
-  }
+        else if(response.data.status==="00" && response.data.role==="Jobseeker"){
+            navigate("/JobseekerDashboard");
+        }
+        else if(response.data.status==="00" && response.data.role==="Admin"){
+            navigate("/AdminDashboard");
+        }
+        else{
+            alert(response.data.message);
+        }
+   
 
     }
     return(
@@ -63,7 +43,7 @@ function   Login(){
           </p>
           <hr />
 
-          <form onSubmit={HandleSubmit}>
+          <form onSubmit={login}>
             {/* Email */}
             <div className="mb-3">
               <label className="form-label">Email</label>
@@ -91,9 +71,10 @@ function   Login(){
             </div>
 
             {/* Button */}
-            <button className="btn btn-primary w-100 mt-2">
+            <button className="btn btn-primary w-100 mt-2" onClick={login}>
               Login
             </button>
+            <input type="checkbox"/><label className="m-3">Remember Me</label>
             <Link to="/Forgotpassword" className="text-center">Forget Password?</Link>
 
             <p className="text-center mt-3">

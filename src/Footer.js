@@ -1,12 +1,12 @@
 import{Outlet,Link} from "react-router-dom"
-// import "./Footer.css";
+ import "./footer.css";
 
 function Footer(){
 
 
     return(
       <>
-          <footer className="bg-primary text-light py-4 mt-5 border-top border-warning border-4">
+          <footer >
       <div className="container">
 
      <div className="row gy-4 align-items-start text-center text-sm-start">
@@ -17,42 +17,42 @@ function Footer(){
      <p><strong>Tel:0748931344</strong></p>
 
      </div>
-     <div className="col-sm-4">
-     <h1>Jump to</h1>
+     <div className="col-sm-4 links">
+     <h5>Jump to</h5>
       <ul className="nav  mb-3 flex-column">
           <li className="nav-item">
             <Link className="nav-link text-white fw-bolder " to="/Home"><i className="bi bi-house-check me-3"></i> HOME</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-white fw-bolder " to="/Jobs"><i className="bi bi-briefcase-fill me-2"></i>JOBS</Link>
+            <Link className="nav-link text-white fw-bolder " to="/Jobs"><i className="bi bi-briefcase-fill me-3"></i>JOBS</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-white fw-bolder " to="/Login"><i className="bi bi-box-arrow-in-right me-2"></i>LOGIN</Link>
+            <Link className="nav-link text-white fw-bolder " to="/Login"><i className="bi bi-box-arrow-in-right me-3"></i>LOGIN</Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link text-white fw-bolder " to="/Register"><i className="bi bi-person-badge-fill me-2"></i>REGISTER</Link>
+            <Link className="nav-link text-white fw-bolder " to="/Register"><i className="bi bi-person-badge-fill me-3"></i>REGISTER</Link>
           </li>
         </ul>
      </div>
   
      <div className="col-sm-4 mx-auto p-2">
-     <h3>Follow Us</h3>
-  <Link to="#" className="d-flex text-white mb-2  text-decoration-none fw-bold fs-4">
+     <h3 className="follow">Follow Us</h3>
+  <Link to="#" >
     <i className="bi bi-facebook me-2 fs-4 "></i>
     Facebook
   </Link>
 
-  <Link to="#" className="d-flex text-white mb-2 text-decoration-none fw-bold fs-4">
+  <Link to="#" >
     <i className="bi bi-whatsapp me-2 fs-4"></i>
     WhatsApp
   </Link>
 
-  <Link to="#" className="d-flex text-white mb-2 text-decoration-none fw-bold fs-4">
+  <Link to="#" >
     <i className="bi bi-twitter-x me-2 fs-4"></i>
     Twitter
   </Link>
 
-  <Link to="#" className="d-flex text-white text-decoration-none fw-bold fs-4">
+  <Link to="#" >
     <i className="bi bi-tiktok me-2 fs-4"></i>
     TikTok
   </Link>

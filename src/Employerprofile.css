@@ -1,0 +1,11 @@
+.profileheading{
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 25px;
+}
+
+form label{
+    font-weight: bold;
+    padding-left: 10px;
+}

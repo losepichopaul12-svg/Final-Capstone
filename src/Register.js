@@ -1,6 +1,6 @@
 import { useState } from "react";
 import{Link} from "react-router-dom"
-import { useNavigate } from "react-router-dom";
+;
 import axios from "axios"
 
 
@@ -8,58 +8,39 @@ import axios from "axios"
 
 
 function Register(){
-const Roles=["Jobseeker","Employer","Admin"];
-const[selected,setselected]=useState("");
+
+const[role,setrole]=useState("");
 const[name,setname]=useState("");
 const[email,setemail]=useState("");
 const[password,setpassword]=useState("")
 const[gender,setgender]=useState("");
-const [phonenumber,setphonenumber]=useState(0)
+const[phonenumber,setphonenumber]=useState(0)
 
 
- const navigate = useNavigate();
-const HandleSubmit= async(e)=>{
+
+const register= async(e)=>{
     e.preventDefault();
    
-    if(!name || !email || !selected ||!gender){
+    if(!name || !email || !role ||!gender){
         alert("Please fill all fields required")
         return;
 
     }
 
    
-    const user = {
-    name,
-    email,
-    gender,
-    role: selected.toLowerCase()
-  };
-
-  
-  localStorage.setItem("user", JSON.stringify(user));
-
+console.log("Sending user data to register api")
   const response=await axios.post("http://localhost:8082/usersdetail",
     {
    name:name,
    email:email,
    password:password,
-   selected:selected,
+   role:role,
    gender:gender,
    phonenumber:phonenumber
     }
   )
-  console.log("the response from server is: ", response);
-   
-  
-  if (user.role === "admin") {
-    navigate("/AdminDashboard");
-  } else if (user.role === "employer") {
-    navigate("/EmployerDashboard");
-  } else if (user.role === "jobseeker") {
-    navigate("/JobseekerDashboard");
-  }
-     
-  
+  console.log("the response from server is: ", response.data);
+  alert(response.data.message)
 }
 
     return(
@@ -69,7 +50,7 @@ const HandleSubmit= async(e)=>{
         <h3 className="text-center mb-3">Create An Account</h3>
         <hr />
 
-        <form onSubmit={HandleSubmit}>
+        <form onSubmit={register}>
           
           {/* Full Name */}
           <div className="mb-3">
@@ -154,24 +135,21 @@ const HandleSubmit= async(e)=>{
             <label className="form-label">Role</label>
             <select
               className="form-select"
-              value={selected}
-              onChange={(e) => setselected(e.target.value)}
+              value={role}
+              onChange={(e) => setrole(e.target.value)}
             >
-              <option value="">Select Role</option>
-              {Roles.map((role, index) => (
-                <option key={index} value={role}>
-                  {role}
-                </option>
-              ))}
+            <option value="" disabled>Select Your Role</option>
+            <option value="Employer">Employer</option>
+            <option value="Jobseeker">Jobseeker</option>
             </select>
           </div>
 
           {/* Button */}
-          <button className="btn btn-primary w-100">
+          <button className="btn btn-primary w-100" type="button" onClick={register}>
             Register
           </button>
 
-          <p className="text-center mt-3">
+          <p className="text-center mt-3" >
             Already have an account?{" "}
             <Link to="/Login">Sign in</Link>
           </p>

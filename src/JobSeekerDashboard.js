@@ -13,7 +13,7 @@ function JobSeekerDashboard() {
   <div>
           <ul className="nav flex-column gap-2 ">
             <li className="nav-item">
-              <Link className="nav-link text-black  shadow-sm bg-white border rounded-4 fst-italic fw-bold" to="Profile"><i class="bi bi-people-fill fs-5 me-2"></i>Profile</Link>
+              <Link className="nav-link text-black  shadow-sm bg-white border rounded-4 fst-italic fw-bold" to="Jobseekerprofile"><i class="bi bi-people-fill fs-5 me-2"></i>Profile</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link text-black  shadow-sm bg-white border rounded-4 fst-italic fw-bold" to="Application"><i class="bi bi-briefcase fs-5 me-2"></i>My Application</Link>

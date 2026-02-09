@@ -16,7 +16,7 @@ function EmployerDashboard() {
               <Link className="nav-link text-black fw-bold fs-20 shadow-sm bg-white border rounded-4 fst-italic fw-bold" to="Postnew"> <i class="bi bi-stickies-fill p-1 fs-5 me-2"></i>Post new</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-black fw-bold fs-20 shadow-sm bg-white border rounded-4 fst-italic fw-bold" to="Newjobs"> <i class="bi bi-briefcase-fill p-1 fs-5 me-2"></i>New Jobs</Link>
+              <Link className="nav-link text-black fw-bold fs-20 shadow-sm bg-white border rounded-4 fst-italic fw-bold" to="Newjobs"> <i class="bi bi-briefcase-fill p-1 fs-5 me-2"></i>My Jobs</Link>
             </li>
             <li className="nav-item">
               <Link className="nav-link text-black fw-bold fs-20 shadow-sm bg-white border rounded-4 fst-italic fw-bold" to="Applicantlist"><i class="bi bi-person-vcard-fill fs-5 me-2"></i>Applicants List</Link>

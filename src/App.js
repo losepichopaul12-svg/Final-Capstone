@@ -21,6 +21,7 @@ import Postnew from './Postnew.js';
 import Newjobs from './Newjobs.js';
 import Applicantlist from './Applicantlist.js';
 import Employerprofile from './Employerprofile.js';
+import Jobseekerprofile from './Jobseekerprofile.js';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
 </Route>
 {/* Employer dashbaord */}
 <Route path='/EmployerDashboard' element={<EmployerDashboard/>}>
+<Route index element={<Employerprofile/>}></Route>
 <Route path='Postnew' element={<Postnew/>}></Route>
 <Route path='Newjobs' element={<Newjobs/>}></Route>
 <Route path='Applicantlist' element={<Applicantlist/>}></Route>
@@ -55,6 +57,8 @@ function App() {
 
 {/* joobseeker dashboard */}
 <Route path='/JobseekerDashboard' element={<JobSeekerDashboard/>}>
+<Route index element={<Findjob/>}></Route>
+<Route path='Jobseekerprofile' element={< Jobseekerprofile/>}></Route>
 <Route path='Application' element={<Application/>}></Route>
 <Route path='Findjob' element={<Findjob/>}></Route>
 <Route path='Notification' element={<Notification/>}></Route>

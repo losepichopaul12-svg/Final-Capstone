@@ -1,6 +1,5 @@
 import { useState } from "react";
-import{Link} from "react-router-dom"
-;
+import{Link} from "react-router-dom";
 import axios from "axios"
 
 
@@ -14,7 +13,7 @@ const[name,setname]=useState("");
 const[email,setemail]=useState("");
 const[password,setpassword]=useState("")
 const[gender,setgender]=useState("");
-const[phonenumber,setphonenumber]=useState(0)
+const[phonenumber,setphonenumber]=useState()
 
 
 
@@ -87,6 +86,9 @@ console.log("Sending user data to register api")
               placeholder="************"
               value={password}
               onChange={(e) =>setpassword(e.target.value)}
+              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$"
+       title="Password must be at least 8 characters long, include uppercase, lowercase, number, and special character"
+      
            required
             />
           </div>
@@ -94,7 +96,7 @@ console.log("Sending user data to register api")
           <div className="mb-3">
             <label className="form-label">Enter Phone Number</label>
             <input
-              type="tel"
+              type="text"
               className="form-control"
               value={phonenumber}
               onChange={(e) =>setphonenumber(e.target.value)}

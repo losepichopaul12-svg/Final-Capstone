@@ -14,6 +14,7 @@ function   Login(){
     const login = async(e)=>{
             e.preventDefault();
         console.log("Sending login request");
+        
         const response = await axios.post("http://localhost:8082/login",
             {email:email, password:password}
         )

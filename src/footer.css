@@ -20,16 +20,40 @@ footer{
     font-weight: bold;
 }
 
-.links ul li Link:hover{
-text-decoration: underline;
-}
-Link{
-    color: brown;
+.follow ul {
+  padding: 0;
 }
 
-.follow{
-    display: block;
+.follow ul li {
+  list-style: none;
+  padding: 5px 0;
 }
-.follow, Link{
-    display: block;
+
+.follow ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
 }
+
+.follow ul li a:hover {
+  border-bottom: 2px white solid;
+}
+.follow i {
+  margin-right: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+ .fa-facebook {
+     color: #1877F2;
+     }
+ .fa-whatsapp { 
+    color: #25D366;
+ }
+ .fa-x-twitter { 
+    color: #000000;
+ }
+ .fa-tiktok { 
+    color: #000000;
+ }
+

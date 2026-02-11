@@ -13,10 +13,47 @@ function Jobseekerprofile(){
     const[portfolio,setportfolio]=useState("");
     const[cvurl,setcvurl]=useState("");
     const handlesubmit=async(e)=>{
-        e.preventDefault("");
+        e.preventDefault();
         alert("Job seeker details created successfully")
+    const response=await axios.post("http://localhost:8082/jobseekerprofile",{
+      fullnames:fullnames,
+      email:email,
+      location:location,
+      phone:phone,
+      biodata:biodata,
+      skills:skills,
+      portfolio:portfolio,
+      cvurl:cvurl
+    })
+      console.log("the response from server is: ", response.data);
+  alert(response.data.message)
     }
 
+    // fetching filed data to the input of the form
+    const fetchjobseekerProfile = async () => {
+  try {
+    const response = await axios.get(
+      "http://localhost:8082/fetch-jobseekerprofile"
+    );
+
+    const data = response.data.data;
+
+    setfullnames(data.fullnames);
+    setemail(data.email);
+    setphone(data.phone);
+    setlocation(data.location);
+    setbiodata(data.biodata);
+    setskills(data.skills)
+    setportfolio(data.portfolio);
+    setcvurl(data.cvurl);
+
+  } catch (error) {
+    console.error("Error fetching profile:", error);
+  }
+};
+useEffect(() =>{
+  fetchjobseekerProfile()
+ },[]);
     return(
         <div className="container mt-3">
         <div className="card p-4 shadow-sm">

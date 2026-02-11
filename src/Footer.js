@@ -1,4 +1,4 @@
-import{Outlet,Link} from "react-router-dom"
+import{Link} from "react-router-dom"
  import "./footer.css";
 
 function Footer(){
@@ -35,45 +35,28 @@ function Footer(){
         </ul>
      </div>
   
-     <div className="col-sm-4 mx-auto p-2">
+     <div className="col-sm-4 mx-auto p-2 follow">
      <h3 className="follow">Follow Us</h3>
-  <Link to="#" >
-    <i className="bi bi-facebook me-2 fs-4 "></i>
-    Facebook
-  </Link>
-
-  <Link to="#" >
-    <i className="bi bi-whatsapp me-2 fs-4"></i>
-    WhatsApp
-  </Link>
-
-  <Link to="#" >
-    <i className="bi bi-twitter-x me-2 fs-4"></i>
-    Twitter
-  </Link>
-
-  <Link to="#" >
-    <i className="bi bi-tiktok me-2 fs-4"></i>
-    TikTok
-  </Link>
-</div>
+     <ul>
+    <li><a href="https://www.facebook.com" target="blank" ><i className="fa-brands fa-facebook"></i>Facebook</a></li> 
+    <li><a href="https://www.facebook.com" target="blank"><i className="fa-brands fa-whatsapp"></i>WhatsApp</a></li>
+    <li><a  href="https://www.whatsapp.com"  target="blank"><i className="fa-brands fa-x-twitter"></i>Twitter</a></li>
+    <li> <a  href="https://www.tiktok.com" target="blank" ><i className="fa-brands fa-tiktok"></i>TikTok</a></li>
+     </ul>
+   </div>
 
 
-      </div>
-      <hr className="fs-4 border border-2 text-white"></hr>
-      <div className="row">
-        <div className="text-center small">
-          <p className="mb-1">
-            Developed & Maintained by <strong>Trust Shield Technologies</strong>
-          </p>
-          <p className="mb-0">
-            &copy;2026 Pastrol community Hub. Privacy Policy | Terms.
-          </p>
-        </div>
-        </div>
-      </div>
-    </footer>
-<Outlet/>
+  </div>
+  <hr className="fs-2 border border-2 text-bright"></hr>
+  <div className="row">
+  <div className="text-center small">
+  <p className="mb-1">Developed & Maintained by <strong>Trust Shield Technologies</strong></p>
+  <p className="mb-0"> &copy;2026 Pastrol community Hub. Privacy Policy | Terms. </p>
+  </div>
+  </div>
+ </div>
+</footer>
+{/* <Outlet/> */}
 </>
       
     )

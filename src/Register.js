@@ -1,6 +1,7 @@
 import { useState } from "react";
-import{Link} from "react-router-dom";
+import{Link,useNavigate} from "react-router-dom";
 import axios from "axios"
+
 
 
 
@@ -14,6 +15,7 @@ const[email,setemail]=useState("");
 const[password,setpassword]=useState("")
 const[gender,setgender]=useState("");
 const[phonenumber,setphonenumber]=useState()
+  const navigate = useNavigate();
 
 
 
@@ -40,6 +42,7 @@ console.log("Sending user data to register api")
   )
   console.log("the response from server is: ", response.data);
   alert(response.data.message)
+  navigate("/EmployerDashboard")
 }
 
     return(
@@ -143,6 +146,7 @@ console.log("Sending user data to register api")
             <option value="" disabled>Select Your Role</option>
             <option value="Employer">Employer</option>
             <option value="Jobseeker">Jobseeker</option>
+           
             </select>
           </div>
 

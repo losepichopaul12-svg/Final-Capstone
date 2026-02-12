@@ -1,6 +1,7 @@
 import { useState } from "react" ;
 import {Link,useNavigate} from "react-router-dom"
 import axios from "axios"
+import "./Login.css"
 
 
 
@@ -72,15 +73,18 @@ function   Login(){
             </div>
 
             {/* Button */}
-            <button className="btn btn-primary w-100 mt-2" onClick={login}>
-              Login
-            </button>
-            <input type="checkbox"/><label className="m-3">Remember Me</label>
-            <Link to="/Forgotpassword" className="text-center">Forget Password?</Link>
+            <button className="btn btn-primary w-100 mt-2" onClick={login}>Login </button>
+            <div className="checkbox">
+            <div className="checkbox2" >
+            <input  
+             className="form-check-input " type="checkbox"/><label>Remember Me</label>
+            <Link to="/Forgotpassword" className="forget">Forgot Password?</Link>
+            </div>
+            </div>
 
-            <p className="text-center mt-3">
+            <p className="login-para">
               Don’t have an account?{" "}
-              <Link to="/Register">Register</Link>
+              <Link to="/Register" className="login-link">Register</Link>
             </p>
           </form>
         </div>

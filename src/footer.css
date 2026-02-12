@@ -7,6 +7,7 @@ footer{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 8px;
 }
 
 .links{
@@ -57,3 +58,22 @@ footer{
     color: #000000;
  }
 
+.fa-house{
+  color: white;
+  margin-right: 5px;
+}
+
+.job-icon{
+  color: white !important;
+   margin-right: 4px!important;
+}
+ .fa-id-card{
+  color: red;
+ }
+
+ .fa-circle-envelope{
+  color: #25D366;
+ }
+ .email-icon{
+  color: white !important;
+ }

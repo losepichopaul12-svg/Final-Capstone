@@ -19,7 +19,7 @@ const submitpost= async(e)=>{
     alert("job post submitted successfully")
 
     const response= await axios.post("http://localhost:8082/newpost",{
-      Jobtitle:Jobtitle,Employer:Employer,Location:Location,Selected:Jobtype,Date:Date,Salary:Salary,Description:Description
+      Jobtitle:Jobtitle,Employer:Employer,Location:Location,Jobtype:Jobtype,Date:Date,Salary:Salary,Description:Description
     })
     console.log("the response from the server is ",response)
 }

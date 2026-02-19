@@ -14,8 +14,8 @@ const[name,setname]=useState("");
 const[email,setemail]=useState("");
 const[password,setpassword]=useState("")
 const[gender,setgender]=useState("");
-const[phonenumber,setphonenumber]=useState()
-  const navigate = useNavigate();
+const[phonenumber,setphonenumber]=useState("")
+const navigate = useNavigate();
 
 
 
@@ -29,7 +29,7 @@ const register= async(e)=>{
     }
 
    
-console.log("Sending user data to register api")
+console.log("Sending user data to register API ")
   const response=await axios.post("http://localhost:8082/usersdetail",
     {
    name:name,
@@ -46,17 +46,17 @@ console.log("Sending user data to register api")
 }
 
     return(
-       <div className="container d-flex justify-content-center align-items-center min-vh-100 mt-3" >
-      <div className="col-md-6 col-lg-5 ">
-      <div className="card shadow p-4 border-0 border-top border-primary border-4 border-0 border-bottom border-primary border-4" >
-        <h3 className="text-center mb-3">Create An Account</h3>
-        <hr />
+    <div className="container d-flex justify-content-center align-items-center min-vh-100 mt-3" >
+    <div className="col-md-6 col-lg-5 ">
+    <div className="card shadow p-4 border-0 border-top border-primary border-4 border-0 border-bottom border-primary border-4" >
+    <h3 className="text-center mb-3">Create An Account</h3>
+    <hr/>
 
-        <form onSubmit={register}>
+    <form onSubmit={register}>
           
           {/* Full Name */}
-          <div className="mb-3">
-            <label className="form-label">Enter Full Names</label>
+   <div className="mb-3">
+   <label className="form-label">Enter Full Names</label>
             <input
               type="text"
               className="form-control"
@@ -137,7 +137,7 @@ console.log("Sending user data to register api")
 
           {/* Role */}
           <div className="mb-4">
-            <label className="form-label">Role</label>
+           <label className="form-label">Role</label>
             <select
               className="form-select"
               value={role}
@@ -146,7 +146,6 @@ console.log("Sending user data to register api")
             <option value="" disabled>Select Your Role</option>
             <option value="Employer">Employer</option>
             <option value="Jobseeker">Jobseeker</option>
-           
             </select>
           </div>
 
@@ -154,12 +153,11 @@ console.log("Sending user data to register api")
           <button className="btn btn-primary w-100" type="button" onClick={register}>
             Register
           </button>
-
+          {/*link to navigate to the login if already registered   */}
           <p className="text-center mt-3" >
             Already have an account?{" "}
             <Link to="/Login">Sign in</Link>
           </p>
-
         </form>
       </div>
       </div>

@@ -7,6 +7,7 @@ import Login from "./Login.js";
 import Register from "./Register.js"
 import Footer from "./Footer.js"
 import Forgotpassword from './Forgotpassword.js';
+import Resetpassword from './Resetpassword.js'
 import AdminDashboard from './AdminDashboard.js';
 import JobSeekerDashboard from './JobSeekerDashboard.js';
 import EmployerDashboard from './EmployerDashboard.js';
@@ -38,6 +39,7 @@ function App() {
 <Route path='/Login' element={<Login/>}></Route>
 <Route path='/Register' element={<Register/>}></Route>
 <Route path='/Forgotpassword' element={<Forgotpassword/>}></Route>
+<Route path='/Resetpassword' element={<Resetpassword/>}></Route>
 </Route>
 
 {/* Admin Dashboard */}

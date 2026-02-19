@@ -16,6 +16,7 @@ function Jobseekerprofile(){
         e.preventDefault();
         alert("Job seeker details created successfully")
     const response=await axios.post("http://localhost:8082/jobseekerprofile",{
+      userid: localStorage.getItem("userid"),
       fullnames:fullnames,
       email:email,
       location:location,
@@ -32,10 +33,11 @@ function Jobseekerprofile(){
     // fetching filed data to the input of the form
     const fetchjobseekerProfile = async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:8082/fetch-jobseekerprofile"
+    const response = await axios.post(
+      "http://localhost:8082/fetch-jobseekerprofile",
+      {headers:{authorize:"Bearer "+localStorage.getItem("usertoken")}}
     );
-
+    console.log("profile response: ",response.data);
     const data = response.data.data;
 
     setfullnames(data.fullnames);

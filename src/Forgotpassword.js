@@ -1,16 +1,14 @@
 import {  useState } from "react";
+import axios from 'axios'
 function Forgotpassword(){
 
-    const [Password,updatePassword]=useState("");
-    const [ConfirmPassword, setConfirmPassword] = useState("");
+   
     const [Email,updateEmail]=useState("");
+   
+   
     const HandleSubmit=async(e)=>{
       e.preventDefault();
-      if(Password !==ConfirmPassword){
-        alert("Password do not match")
-        return;
-      }
-      
+    
       
     }
     return(
@@ -35,36 +33,10 @@ function Forgotpassword(){
             />
           </div>
 
-          {/* password*/}
-          <div className="mb-3">
-            <label className="form-label">New password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="*********"
-              value={Password}
-              onChange={(e) => updatePassword(e.target.value)}
-            required
-
-            />
-          </div>
-
-          {/* confirm password */}
-          <div className="mb-3">
-            <label className="form-label">confirm New password</label>
-            <input
-              type="password"
-              className="form-control"
-              placeholder="*************"
-              value={ConfirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-
-            />
-          </div>
+       
           {/* Button */}
           <button className="btn btn-primary w-100">
-            Reset password
+            Send Reset Link
           </button>
 
         </form>

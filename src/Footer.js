@@ -1,6 +1,6 @@
 import{Link} from "react-router-dom"
  import "./footer.css";
-
+import { FaSquarePhoneFlip } from "react-icons/fa6";
 function Footer(){
 
 
@@ -13,7 +13,7 @@ function Footer(){
         <div className="col-sm-4 p-3">
      <h2><strong>Contact Us</strong></h2>
      <p className="text-white"><strong><i class="bi bi-envelope-open-fill m-2"></i>Email Address:Pastrolcommunity.info.org</strong></p>
-     <p><strong><i className="bi bi-archive-fill m-2"></i>P.O.Box 101-30501 Lodwar</strong></p>
+     <p><strong> <FaSquarePhoneFlip />P.O.Box 101-30501 Lodwar</strong></p>
      <p><strong><i className="bi bi-telephone-inbound-fill m-2"></i>Tel:0748931344</strong></p>
 
      </div>

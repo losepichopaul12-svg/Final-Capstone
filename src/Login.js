@@ -21,12 +21,16 @@ function   Login(){
         )
         console.log("the login response is: ",  response.data);
         if(response.data.status === "00" && response.data.role ==="Employer"){
+          
+          localStorage.setItem("usertoken", response.data.token); //token stored after being generated 
             navigate("/EmployerDashboard");
         }
-        else if(response.data.status==="00" && response.data.role==="Jobseeker"){
+        else if(response.data.status ==="00" && response.data.role ==="Jobseeker"){
+               localStorage.setItem("usertoken", response.data.token); //token stored after being generated 
             navigate("/JobseekerDashboard");
         }
-        else if(response.data.status==="00" && response.data.role==="Admin"){
+        else if(response.data.status ==="00" && response.data.role ==="Admin"){
+                localStorage.setItem("usertoken", response.data.token); //token stored after being generated 
             navigate("/AdminDashboard");
         }
         else{
@@ -43,7 +47,7 @@ function   Login(){
           <p className="text-center text-muted mb-3">
             Login to Pastoral Community Hub
           </p>
-          <hr />
+          <hr/>
 
           <form onSubmit={login}>
             {/* Email */}
@@ -73,7 +77,7 @@ function   Login(){
             </div>
 
             {/* Button */}
-            <button className="btn btn-primary w-100 mt-2" onClick={login}>Login </button>
+            <button className="btn btn-primary w-100 mt-2" type="submit" onClick={login}>Login </button>
             <div className="checkbox">
             <div className="checkbox2" >
             <input  

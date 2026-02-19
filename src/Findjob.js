@@ -34,10 +34,11 @@ function Findjob(){
             <h6>Employer  :{Job.Employer}</h6>
             <p className="small mb-1"><strong>Location :</strong>{Job.Location}</p>
             <p className="small mb-1"><strong>Job type:</strong>{Job.Selected}</p>
-            <p className="small mb-1"><strong>Deadline Date :</strong>{Job.Date}</p>
+            <p className="small mb-1"><strong>Deadline Date :</strong>{new Date(Job.Date).toLocalString}</p>
             <p className="fw-bold"><strong>Ksh :</strong>{Job.Salary}</p>
             <p className="small text-muted lh-sm mb-2">{Job.Description}</p>
-            <button className="btn btn-primary w-100 mt-auto"> Apply Now</button>
+            <button  className="btn btn-primary w-100 mt-auto"> Apply Now</button>
+            {/* onClick={applyJob(Job._id)} */}
           </div>
         </div>
       </div>

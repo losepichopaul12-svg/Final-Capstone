@@ -15,7 +15,7 @@ function Jobseekerprofile(){
     const handlesubmit=async(e)=>{
         e.preventDefault();
         alert("Job seeker details created successfully")
-    const response=await axios.post("http://localhost:8082/jobseekerprofile",{
+    const response=await axios.post("https://capstonebackend-bh74.onrender.com/jobseekerprofile",{
       userid: localStorage.getItem("userid"),
       fullnames:fullnames,
       email:email,
@@ -34,7 +34,7 @@ function Jobseekerprofile(){
     const fetchjobseekerProfile = async () => {
   try {
     const response = await axios.post(
-      "http://localhost:8082/fetch-jobseekerprofile",
+      "https://capstonebackend-bh74.onrender.com/fetch-jobseekerprofile",
       {headers:{authorize:"Bearer "+localStorage.getItem("usertoken")}}
     );
     console.log("profile response: ",response.data);

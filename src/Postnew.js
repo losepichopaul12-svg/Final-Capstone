@@ -18,7 +18,7 @@ const submitpost= async(e)=>{
   }else
     alert("job post submitted successfully")
 
-    const response= await axios.post("http://localhost:8082/newpost",{
+    const response= await axios.post("https://capstonebackend-bh74.onrender.com/newpost",{
       Jobtitle:Jobtitle,Employer:Employer,Location:Location,Jobtype:Jobtype,Date:Date,Salary:Salary,Description:Description
     })
     console.log("the response from the server is ",response)

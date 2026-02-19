@@ -6,7 +6,7 @@ function Jobs (){
 const[Jobs,setJobs]=useState([])
    const newJobs = async () => {
     try {
-      const response = await axios.get("http://localhost:8082/fetch-jobs");
+      const response = await axios.get("https://capstonebackend-bh74.onrender.com/fetch-jobs");
       console.log("Response from backend:", response.data);
       setJobs(response.data.data); 
     } catch (error) {

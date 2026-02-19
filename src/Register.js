@@ -30,7 +30,7 @@ const register= async(e)=>{
 
    
 console.log("Sending user data to register API ")
-  const response=await axios.post("http://localhost:8082/usersdetail",
+  const response=await axios.post("https://capstonebackend-bh74.onrender.com/usersdetail",
     {
    name:name,
    email:email,

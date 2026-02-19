@@ -15,7 +15,7 @@ function Employerprofile(){
     e.preventDefault();
     alert("Company profile updated successfully");
 
-    const response=await axios.post("http://localhost:8082/employerdetail",
+    const response=await axios.post("https://capstonebackend-bh74.onrender.com/employerdetail",
       {
       companyname:companyname,
       companyemail:companyemail,
@@ -30,7 +30,7 @@ function Employerprofile(){
   const fetchEmployerProfile = async () => {
   try {
     const response = await axios.get(
-      "http://localhost:8082/fetch-employerprofile"
+      "https://capstonebackend-bh74.onrender.com/fetch-employerprofile"
     );
 
     const data = response.data.data;

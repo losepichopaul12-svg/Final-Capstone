@@ -38,6 +38,7 @@ const[selectedJob, setSelectedJob] = useState(null);
     console.log("Sending application  data to database API ")
   const response=await axios.post("https://capstonebackend-bh74.onrender.com/api/sendapplication",
     {
+  jobId: selectedJob._id,
   Jobtitle:selectedJob.Jobtitle,
   applicantname:applicantname,
   applicantemail:applicantemail

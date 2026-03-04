@@ -18,9 +18,7 @@ function JobSeekerDashboard() {
             <li className="nav-item">
               <Link className="nav-link text-black  shadow-sm bg-white border rounded-4 fst-italic fw-bold" to="Application"><i class="bi bi-briefcase fs-5 me-2"></i>My Application</Link>
             </li>
-            <li className="nav-item">
-              <Link className="nav-link text-black  shadow-sm bg-white border rounded-4 fst-italic fw-bold " to="Notification"><i class="bi bi-bell-fill fs-5 me-2"></i>Notification</Link>
-            </li>
+          
             <li className="nav-item">
               <Link className="nav-link text-black shadow-sm bg-white  border rounded-4 fst-italic  fw-bold" to="Findjob"><i class="bi bi-journals fs-5 me-2"></i>Find job</Link>
             </li>

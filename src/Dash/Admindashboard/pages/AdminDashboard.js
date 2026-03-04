@@ -22,7 +22,7 @@ function AdminDashboard() {
               <Link className="nav-link text-black fw-bold fs-20 shadow-sm bg-white border rounded-4 fst-italic fw-bold " to="Reports"><i class="bi bi-clipboard-data-fill fs-5 me-2"></i>View Reports</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link text-black fw-bold fs-20 shadow-sm bg-white  border rounded-4 fst-italic  fw-bold" to="Profile"><i class="bi bi-people-fill fs-5 me-2"></i>Profile</Link>
+              <Link className="nav-link text-black fw-bold fs-20 shadow-sm bg-white  border rounded-4 fst-italic  fw-bold" to="AdminProfile"><i class="bi bi-people-fill fs-5 me-2"></i>Profile</Link>
             </li>
             <li className="nav-item mt-2">
               <Link className="nav-link text-white fw-bold fs-20 border rounded-4 bg-danger fst-italic fw-bold " to="/login"><i class="bi bi-box-arrow-in-left fs-5 me-2"></i>Logout</Link>

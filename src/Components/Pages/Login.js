@@ -11,11 +11,20 @@ function   Login(){
     const[email,setemail]=useState("");
     const[password,setpassword]=useState("");
     const navigate = useNavigate();
+    
+    const [loading, setLoading] = useState(false);
+    const [data, setData] = useState(null);
 
     const login = async(e)=>{
             e.preventDefault();
         console.log("Sending login request");
         
+        // button loader.
+        setLoading(true)
+        setTimeout(()=>{
+          setData("Welcome loged to the account successfuly!");
+          setLoading(false)
+        },3000);
         const response = await axios.post("https://capstonebackend-bh74.onrender.com/login",
             {email:email, password:password}
         )
@@ -41,13 +50,20 @@ function   Login(){
     }
     return(
          <div className="container d-flex justify-content-center align-items-center min-vh-100">
-      <div className="col-md-6 col-lg-5">
+      <div className="col-md-6 col-lg-5 mt-3">
         <div className="card shadow p-4 border-0 border-top border-primary border-4 border-0 border-bottom border-primary border-4">
-          <h3 className="text-center mb-2">Welcome Back</h3>
+          <h3 className="text-center mb-2">Welcome Back !</h3>
           <p className="text-center text-muted mb-3">
             Login to Pastoral Community Hub
           </p>
           <hr/>
+          <div>
+             {
+              loading ?(
+                <div></div>
+              ):(<h2 className="notification">{data}</h2>)
+            }
+          </div>
 
           <form onSubmit={login}>
             {/* Email */}
@@ -77,7 +93,8 @@ function   Login(){
             </div>
 
             {/* Button */}
-            <button className="btn btn-primary w-100 mt-2" type="submit" onClick={login}>Login </button>
+            <button className="btn btn-primary w-100 mt-2" type="submit" onClick={login}>Login  </button> <div className="loader"></div>
+           
             <div className="checkbox">
             <div className="checkbox2" >
             <input  

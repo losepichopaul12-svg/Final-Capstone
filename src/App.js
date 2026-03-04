@@ -1,28 +1,27 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Navbar from "./Navbar.js";
-import Home from "./Home.js";
-import Jobs from "./Jobs.js";
-import Login from "./Login.js";
-import Register from "./Register.js"
-import Footer from "./Footer.js"
-import Forgotpassword from './Forgotpassword.js';
-import Resetpassword from './Resetpassword.js'
-import AdminDashboard from './AdminDashboard.js';
-import JobSeekerDashboard from './JobSeekerDashboard.js';
-import EmployerDashboard from './EmployerDashboard.js';
+import Navbar from "./Components/Pages/Navbar.js";
+import Home from "./Components/Pages/Home.js";
+import Jobs from "./Components/Pages/Jobs.js";
+import Login from "./Components/Pages/Login.js";
+import Register from "./Components/Pages/Register.js"
+import Footer from "./Components/Pages/Footer.js"
+import Forgotpassword from './Components/Pages/Forgotpassword.js';
+import Resetpassword from './Components/Pages/Resetpassword.js'
+import AdminDashboard from './Dash/Admindashboard/pages/AdminDashboard.js';
+import JobSeekerDashboard from './Dash/Jobseekerdashboard/pages/JobSeekerDashboard.js';
+import EmployerDashboard from './Dash/Employerdashboard/Pages/EmployerDashboard.js';
 import {BrowserRouter,Routes,Route } from "react-router-dom";
-import Reports  from './Reports.js';
-import ManageUsers from './Manageuser.js';
-import Approvedjobs from './Approvedjobs.js';
-import Application from './Application.js';
-import Findjob from './Findjob.js';
-import Notification from "./Notification.js"
-import Postnew from './Postnew.js';
-import Newjobs from './Newjobs.js';
-import Applicantlist from './Applicantlist.js';
-import Employerprofile from './Employerprofile.js';
-import Jobseekerprofile from './Jobseekerprofile.js';
+import Reports  from './Dash/Admindashboard/pages/Reports.js';
+import ManageUsers from './Dash/Admindashboard/pages/Manageuser.js';
+import Approvedjobs from './Dash/Admindashboard/pages/Approvedjobs.js';
+import Application from './Dash/Jobseekerdashboard/pages/Application.js';
+import Findjob from './Dash/Jobseekerdashboard/pages/Findjob.js';
+import Postnew from './Dash/Employerdashboard/Pages/Postnew.js';
+import Newjobs from './Dash/Employerdashboard/Pages/Newjobs.js';
+import Applicantlist from './Dash/Employerdashboard/Pages/Applicantlist.js';
+import Employerprofile from './Dash/Employerdashboard/Pages/Employerprofile.js';
+import Jobseekerprofile from './Dash/Jobseekerdashboard/pages/Jobseekerprofile.js';
 
 
 function App() {
@@ -60,12 +59,11 @@ function App() {
 {/* joobseeker dashboard */}
 <Route path='/JobseekerDashboard' element={<JobSeekerDashboard/>}>
 <Route index element={<Findjob/>}></Route>
-<Route path='Jobseekerprofile' element={< Jobseekerprofile/>}></Route>
+<Route path='Jobseekerprofile' element={<Jobseekerprofile/>}></Route>
 <Route path='Application' element={<Application/>}></Route>
 <Route path='Findjob' element={<Findjob/>}></Route>
-<Route path='Notification' element={<Notification/>}></Route>
 </Route>
-{/* End of Jobseekr nested dashbaord */}
+{/* End of Jobseeker nested dashbaord */}
 </Routes>
 <Footer></Footer>
 </BrowserRouter>

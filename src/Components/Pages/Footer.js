@@ -11,7 +11,7 @@ function Footer(){
 
      <div className="row gy-4 align-items-start text-center text-sm-start">
         <div className="col-sm-4 p-3">
-     <h2><strong>Contact Us</strong></h2>
+     <h5><strong>Contact Us</strong></h5>
      <p className="text-white"><strong><i class="bi bi-envelope-open-fill m-2"></i>Email Address:Pastrolcommunity.info.org</strong></p>
      <p><strong> <FaSquarePhoneFlip />P.O.Box 101-30501 Lodwar</strong></p>
      <p><strong><i className="bi bi-telephone-inbound-fill m-2"></i>Tel:0748931344</strong></p>
@@ -36,7 +36,7 @@ function Footer(){
      </div>
   
      <div className="col-sm-4 my-4 p-2 follow">
-     <h3 className="follow">Follow Us</h3>
+     <h5 className="follow-heading" >Follow Us</h5>
      <ul>
     <li><a href="https://www.facebook.com" target="blank" ><i className="fa-brands fa-facebook"></i>Facebook</a></li> 
     <li><a href="https://www.facebook.com" target="blank"><i className="fa-brands fa-whatsapp"></i>WhatsApp</a></li>

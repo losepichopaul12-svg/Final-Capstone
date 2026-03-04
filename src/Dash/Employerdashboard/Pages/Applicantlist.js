@@ -22,7 +22,7 @@ function Applicantlist(){
    const newapplicants = async () => {
     console.log("fetching jobs applicants list from the database")
     try {
-      const response = await axios.get("https://capstonebackend-bh74.onrender.com/api/2/getapplicant");
+      const response = await axios.get("https://capstonebackend-bh74.onrender.com/Api/getapplicant");
       console.log("Response from backend:", response.data);
       setApplications(response.data.data); 
     } catch (error) {

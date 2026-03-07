@@ -22,6 +22,7 @@ import Newjobs from './Dash/Employerdashboard/Pages/Newjobs.js';
 import Applicantlist from './Dash/Employerdashboard/Pages/Applicantlist.js';
 import Employerprofile from './Dash/Employerdashboard/Pages/Employerprofile.js';
 import Jobseekerprofile from './Dash/Jobseekerdashboard/pages/Jobseekerprofile.js';
+import AdminProfile from './Dash/Admindashboard/pages/AdminProfile.js';
 
 
 function App() {
@@ -43,6 +44,8 @@ function App() {
 
 {/* Admin Dashboard */}
 <Route path='/AdminDashboard' element={<AdminDashboard/>}>
+<Route index element={<AdminProfile/>}></Route>
+<Route path='AdminProfile' element={<AdminProfile/>}></Route>
 <Route path='Manageusers' element={<ManageUsers/>}></Route>
 <Route path='Approvedjobs' element={<Approvedjobs/>}></Route>
 <Route path='Reports' element={<Reports/>}></Route>

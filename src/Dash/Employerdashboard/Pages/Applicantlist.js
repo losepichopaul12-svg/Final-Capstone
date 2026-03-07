@@ -1,23 +1,8 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
-function Applicantlist(){
-  //   const applicants = [
-  //   {
-  //     id: 1,
-  //     name: "Losepicho Paul",
-  //     job: "Frontend Developer",
-  //     status: "Shortlisted"
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Sarah Wanjiru",
-  //     job: "UI/UX Designer",
-  //     status: "Pending"
-  //   }
 
-
-    
-  // ];
+function Applicantlist(){ 
+  
   const[Applications,setApplications]=useState([]);
    const newapplicants = async () => {
     console.log("fetching jobs applicants list from the database")
@@ -63,7 +48,7 @@ newapplicants();
                 <td>{Application.applicantemail}</td>
                <td>{Application.Jobtitle}</td>
                 <td>
-                  <button className="btn btn-success m-2"onClick={() => updateStatus(Application._id,"Shortlisted")}>Shortlist</button>
+                  <button className="btn btn-success m-2" onClick={() => updateStatus(Application._id,"Shortlisted")}>Shortlist</button>
                   <button className="btn btn-danger" onClick={() => updateStatus(Application._id,"Rejected")}>Reject</button>
                 </td>
               </tr>

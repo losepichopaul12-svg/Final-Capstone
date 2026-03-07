@@ -11,13 +11,54 @@ function ManageUsers(){
       console.log("Response from backend:", response.data);
       setusers(response.data.data); 
     } catch (error) {
-      console.error("Error fetching new applicants:", error);
+      console.error("Error fetching new users:", error);
     }
   };
 
  useEffect(() =>{
   userslist()
  },[]);
+// Blocking user API
+ const blockUser = async(id) => {
+
+  try{
+
+    await axios.put(
+      `https://capstonebackend-bh74.onrender.com/block-user/${id}`
+    )
+
+    alert("User blocked successfully")
+
+    userslist() // refresh table
+
+  }catch(error){
+
+    console.error("Error blocking user",error)
+
+  }
+
+};
+
+// Deleting user API
+const deleteUser = async(id) => {
+
+  try{
+
+    await axios.delete(
+      `https://capstonebackend-bh74.onrender.com/delete-user/${id}`
+    )
+
+    alert("User deleted successfully")
+
+    userslist()
+
+  }catch(error){
+
+    console.error("Error deleting user",error)
+
+  }
+
+};
     // const usersdata=[
     //     {id:1,name:"Mathew deng ",email:"Mathew@gmail.com",role:"Job seeker",status:"Active"},
     //     {id:2,name:"Mactaba Lokai",email:"Lokai@gmail.com",role:"Job seeker",status:"Active"},
@@ -42,6 +83,7 @@ function ManageUsers(){
         <th scope="col">ROLE</th>
         <th scope="col">GENDER</th>
         <th scope="col">PHONE NUMBER</th>
+        <th scope="col">STATUS</th>
         <th scope="col">ACTION</th>
         </tr>
         </thead>
@@ -55,9 +97,31 @@ function ManageUsers(){
                     <td>{user.gender}</td>
                     <td>{user.phonenumber}</td>
                     <td>
-                <button className="btn btn-sm btn-warning me-2">Block</button>
-                <button className="btn btn-sm btn-danger">Delete</button>
-                  </td>
+<span className={
+(user.status || "Active") === "Blocked"
+? "badge bg-danger"
+: "badge bg-success"
+}>
+{user.status || "Active"}
+</span>
+</td>
+                   <td>
+
+<button
+ className="btn btn-sm btn-warning me-2"
+ onClick={()=>blockUser(user._id)}
+>
+Block
+</button>
+
+<button
+ className="btn btn-sm btn-danger mt-1"
+ onClick={()=>deleteUser(user._id)}
+>
+Delete
+</button>
+
+</td>
                 </tr>
             ))}
             </tbody>

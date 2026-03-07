@@ -41,8 +41,8 @@ function Application(){
           </tr>
         </thead>
         <tbody>
-          {Applications.map(Application => (
-            <tr key={Application._id}>
+          {Applications.map((Application,index )=> (
+            <tr key={index}>
               <td>{Application.jobId?.Jobtitle}</td>
               <td>{Application.jobId?.Employer}</td>
               <td>{Application.status}</td>

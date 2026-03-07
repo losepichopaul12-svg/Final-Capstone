@@ -43,7 +43,7 @@ function Approvedjobs(){
 
     return(
         <div className="container mt-2">
-       <h2 className="mb-4 text-center ft-italic text-uppercase fw-bold">My Jobs</h2>
+       <h2 className="mb-4 text-center ft-italic text-uppercase fw-bold">Available  Jobs posted </h2>
   
 
   <div className="row ">

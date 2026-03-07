@@ -32,7 +32,7 @@ function ManageUsers(){
         <div className="container max-auto">
         <div className="card shadow-sm">
         <div className="card-body">
-        <h1 className=" text-center fw-bold">Manage Users</h1>
+        <h1 className=" text-center fw-bold"> Platfrom Users</h1>
         <div className="table-responsive-sm">
         <table className="table table-striped table-hover table-bordered align-middle table-padding">
         <thead className="fw-bold text-white text-center table-primary">
@@ -47,8 +47,8 @@ function ManageUsers(){
         </thead>
         <tbody>
         {
-            users.map((user)=>(
-                <tr key={users.id} className="text-center p-3">
+            users.map((user,index)=>(
+                <tr key={index} className="text-center p-3">
                     <td >{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.role}</td>

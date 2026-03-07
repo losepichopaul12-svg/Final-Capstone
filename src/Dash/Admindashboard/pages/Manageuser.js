@@ -7,7 +7,7 @@ function ManageUsers(){
    const userslist = async () => {
     console.log("fetching jobs applicants list from the database")
     try {
-      const response = await axios.get("https://capstonebackend-bh74.onrender.com/Api2/fetch-users");
+      const response = await axios.get("https://capstonebackend-bh74.onrender.com/fetch-users");
       console.log("Response from backend:", response.data);
       setusers(response.data.data); 
     } catch (error) {

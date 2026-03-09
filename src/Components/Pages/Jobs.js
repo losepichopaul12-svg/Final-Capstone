@@ -52,14 +52,14 @@ const[selectedJob, setSelectedJob] = useState(null);
     return(
       
          <div className="container mt-2">
-       <h2 className="mb-4 text-center ft-italic text-uppercase fw-bold">My Jobs</h2>
+       <h2 className="mb-4 text-center ft-italic text-uppercase fw-bold">Available Jobs</h2>
   
 
   <div className="row ">
 
     {Jobs.map((Job, index) => (
       <div className="col-md-4 mb-2" key={index}>
-        <div className="card h-100 shadow-sm">
+        <div className="card h-100 shadow-sm job-card">
           
           <div className="card-body d-flex flex-column">
             <h6>Job title:  {Job.Jobtitle}</h6>
@@ -71,7 +71,7 @@ const[selectedJob, setSelectedJob] = useState(null);
             <p className="fw-bold"><strong>Ksh :</strong>{Job.Salary}</p>
             <p className="small text-muted lh-sm mb-2">{Job.Description}</p>
             <div>
-            <button className="btn btn-primary w-100 mt-auto"  onClick={() => { console.log("Button clicked"); setSelectedJob(Job); setOpen(true)}} > Apply Now</button>
+            <button className="btn btn-primary w-100 mt-auto"  onClick={() => { console.log("Button clicked"); setSelectedJob(Job); setOpen(true)}} > Apply Now </button>
              
 
             </div>
@@ -116,7 +116,10 @@ const[selectedJob, setSelectedJob] = useState(null);
                 required
               />
             </div>
-             <button type="submit"   className="btn btn-success w-100">Send Application</button>
+             <button type="submit"   className="btn btn-success w-100">Send Application 
+             <span className="spinner-border spinner-border-sm mx-2" aria-hidden="true"></span>
+             <span className="visually-hidden m-2" role="status">Loading...</span>
+             </button>
  </form>
  </div>
 </div>

@@ -112,7 +112,10 @@ function Findjob(){
                 required
               />
             </div>
-             <button type="submit"   className="btn btn-success w-100">Send Application</button>
+             <button type="submit"   className="btn btn-success w-100">Send Application 
+            <span className="spinner-border spinner-border-sm mx-2" aria-hidden="true"></span>
+             <span className="visually-hidden m-2" role="status">Loading...</span>
+             </button>
  </form>
  </div>
 </div>

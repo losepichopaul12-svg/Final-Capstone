@@ -152,6 +152,8 @@ console.log("Sending user data to register API ")
           {/* Button */}
           <button className="btn btn-primary w-100" type="button" onClick={register}>
             Register
+            <span className="spinner-border spinner-border-sm mx-2" aria-hidden="true"></span>
+             <span className="visually-hidden m-2" role="status">Loading...</span>
           </button>
           {/*link to navigate to the login if already registered   */}
           <p className="text-center mt-3" >

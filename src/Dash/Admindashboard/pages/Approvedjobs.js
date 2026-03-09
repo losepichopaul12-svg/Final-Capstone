@@ -17,6 +17,19 @@ function Approvedjobs(){
   newJobs()
  },[]);
 
+ const deleteJob = async(id) => {
+  try{
+    const response = await axios.delete(
+      `https://capstonebackend-bh74.onrender.com/delete-job/${id}`
+    );
+
+    alert(response.data.message);
+// remove job immediately
+ setJobs(Jobs.filter(Job => Job._id !== id));
+  }catch(error){
+    console.log(error);
+  }
+};
 
     return(
         <div className="container mt-2">
@@ -40,7 +53,7 @@ function Approvedjobs(){
             <p className="small text-muted lh-sm mb-2">{Job.Description}</p>
            <div className="d-flex gap-5">
           <button className="btn btn-success btn-sm">Approve</button>
-         <button className="btn btn-danger btn-sm">Reject</button>
+         <button className="btn btn-danger btn-sm" onClick={()=>deleteJob(Job._id)}>Delete</button>
          </div>
           </div>
         </div>

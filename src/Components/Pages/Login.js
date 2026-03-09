@@ -14,6 +14,7 @@ function   Login(){
    
 
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
    
     const login = async(e)=>{
             e.preventDefault();
@@ -76,16 +77,27 @@ function   Login(){
             </div>
 
             {/* Password */}
-            <div className="mb-3">
+            <div className="mb-3 position-relative">
               <label className="form-label">Password</label>
               <input
                 className="form-control"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 value={password}
                 placeholder="********"
                 onChange={(e) => setpassword(e.target.value)}
                 required
               />
+               <span
+    onClick={() => setShowPassword(!showPassword)}
+    style={{
+      position: "absolute",
+      right: "10px",
+      top: "38px",
+      cursor: "pointer"
+    }}
+  >
+    {showPassword ? "" : "👁️"}
+  </span>
             </div>
 
             {/* Button */}

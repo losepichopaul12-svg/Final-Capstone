@@ -18,6 +18,9 @@ const[phonenumber,setphonenumber]=useState("")
 const navigate = useNavigate();
 
 
+const [loading, setLoading] = useState(false);
+
+
 
 const register= async(e)=>{
     e.preventDefault();
@@ -27,8 +30,8 @@ const register= async(e)=>{
         return;
 
     }
-
-   
+try{
+    setLoading(true);
 console.log("Sending user data to register API ")
   const response=await axios.post("https://capstonebackend-bh74.onrender.com/usersdetail",
     {
@@ -43,6 +46,12 @@ console.log("Sending user data to register API ")
   console.log("the response from server is: ", response.data);
   alert(response.data.message)
   navigate("/EmployerDashboard")
+  } catch (error) {
+    console.log(error);
+    alert("Registration failed");
+  } finally {
+    setLoading(false);
+  }
 }
 
     return(
@@ -89,8 +98,8 @@ console.log("Sending user data to register API ")
               placeholder="************"
               value={password}
               onChange={(e) =>setpassword(e.target.value)}
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$"
-       title="Password must be at least 8 characters long, include uppercase, lowercase, number, and special character"
+      //         pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$"
+      //  title="Password must be at least 8 characters long, include uppercase, lowercase, number, and special character"
       
            required
             />
@@ -150,11 +159,9 @@ console.log("Sending user data to register API ")
           </div>
 
           {/* Button */}
-          <button className="btn btn-primary w-100" type="button" onClick={register}>
-            Register
-            <span className="spinner-border spinner-border-sm mx-2" aria-hidden="true"></span>
-             <span className="visually-hidden m-2" role="status">Loading...</span>
-          </button>
+       <button className="btn btn-primary w-100" type="submit" disabled={loading}>
+  {loading ? "Registering..." : "Register"}
+</button>
           {/*link to navigate to the login if already registered   */}
           <p className="text-center mt-3" >
             Already have an account?{" "}

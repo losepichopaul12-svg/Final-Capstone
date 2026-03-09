@@ -52,7 +52,7 @@ const[selectedJob, setSelectedJob] = useState(null);
     return(
       
          <div className="container mt-2">
-       <h2 className="mb-4 text-center ft-italic text-uppercase fw-bold">Available Jobs</h2>
+       <h2 className="mb-4 text-center ft-italic  fw-bold heading">Available Jobs</h2>
   
 
   <div className="row ">
@@ -83,7 +83,7 @@ const[selectedJob, setSelectedJob] = useState(null);
   </div>
   {open &&  (
     
- <div  className="modal custom-modal">
+ <div  className="modal custom-modal ">
  <div className="">
  <div className="modal-content ">
  <Link to="/Register" className="link">Create Account </Link>

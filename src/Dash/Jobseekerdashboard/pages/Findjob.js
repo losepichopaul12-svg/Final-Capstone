@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import axios from "axios"
 import { Link } from "react-router-dom";
+import "./Modal.css"
 
 function Findjob(){
  const[Jobs,setJobs]=useState([]);
@@ -9,6 +10,7 @@ function Findjob(){
  const[applicantemail,setapplicantemail]=useState("");
  const[selectedJob, setSelectedJob] = useState(null);
  
+   const [loading, setLoading] = useState(false);
    const newJobs = async () => {
     try {
       const response = await axios.get("https://capstonebackend-bh74.onrender.com/fetch-jobs");
@@ -32,6 +34,8 @@ function Findjob(){
         return;
 
     }
+    try{
+      setLoading(true);
     console.log("Sending application  data to database API ")
   const response=await axios.post("https://capstonebackend-bh74.onrender.com/api/sendapplication",
     {
@@ -43,12 +47,17 @@ function Findjob(){
   )
   console.log("the response from server is: ", response.data);
   alert(response.data.message)
-
+}catch (error) {
+    console.log(error);
+    alert("sending Application failed");
+  } finally {
+    setLoading(false);
+  }
  }
 
     return(
       <div className="container mt-2">
-       <h2 className="mb-4 text-center ft-italic text-uppercase fw-bold">Apply Available Jobs</h2>
+       <h2 className="mb-4 text-center ft-italic  fw-bold heading">Apply Available Jobs</h2>
   
 
   <div className="row ">
@@ -112,10 +121,10 @@ function Findjob(){
                 required
               />
             </div>
-             <button type="submit"   className="btn btn-success w-100">Send Application 
-            <span className="spinner-border spinner-border-sm mx-2" aria-hidden="true"></span>
-             <span className="visually-hidden m-2" role="status">Loading...</span>
-             </button>
+             
+             <button className="btn btn-success w-100" type="submit" disabled={loading}>
+  {loading ? "sending   In..." : "Send Application"}
+</button>
  </form>
  </div>
 </div>

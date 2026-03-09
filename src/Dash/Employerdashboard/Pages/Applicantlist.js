@@ -30,7 +30,7 @@ newapplicants();
     return(
          <div className="container mt-3">
       <div className="card p-3 shadow-sm">
-        <h4 className="mb-3">Applicants</h4>
+        <h4 className="mb-3 heading text-center">Applicants List</h4>
 
         <table className="table table-striped text-center">
           <thead>

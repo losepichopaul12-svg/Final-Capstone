@@ -17,33 +17,10 @@ function Approvedjobs(){
   newJobs()
  },[]);
 
-//     const jobs=[
-//     {title:"Community Mobilizer", employer:"save the children",location:"Lokichogio",status:"Approved"},
-//     {title:"IT Support Assistant", employer:"Turkana University",location:"Lodwar",status:"Pending"},
-//     {title:"Field Enumerator", employer:"UNHCR", location:"Kakuma",status:"Pending"},
-   
-// ]
-
-// const jobs1=[
-//      {title:"Operation Manager", employer:"INKO MOKO",location:"Kalobeyei",status:"Pending"},
-//     {title:"Full Stack Developer", employer:"Kenya Revenue Authority",location:"Nairobi",status:"Pending"},
-//     {title:"Sales Agents", employer:"Kenya Breweries",location:"Nakuru",status:"Approved"}
-// ]
-    
-// const jobs2 = [
-//   { title: "Project Officer", employer: "World Vision", location: "Kitale",status:"Approved" },
-//   { title: "Data Analyst", employer: "Safaricom", location: "Nairobi",status:"Pending" },
-//   { title: "HR Assistant", employer: "Red Cross", location: "Eldoret",status:"Approved" },
-// ];
-// const jobs3 = [
-//   {title: "Project Officer", employer: "World Vision",location: "Marsabit",status:"Pending"},
-//   {title: "Data Analyst",employer: "Amref Health Africa", location: "Nairobi",status:"Approved"},
-//   { title: "Logistics Assistant",employer: "International Rescue Committee",location: "Kakuma",status:"Approved" }
-// ];
 
     return(
         <div className="container mt-2">
-       <h2 className="mb-4 text-center ft-italic text-uppercase fw-bold">Available  Jobs posted </h2>
+       <h2 className="mb-4 text-center ft-italic  fw-bold heading">Available  Jobs posted </h2>
   
 
   <div className="row ">
@@ -61,6 +38,10 @@ function Approvedjobs(){
             <p className="small mb-1"><strong>Deadline Date :</strong>{Job.Date}</p>
             <p className="fw-bold"><strong>Ksh :</strong>{Job.Salary}</p>
             <p className="small text-muted lh-sm mb-2">{Job.Description}</p>
+           <div className="d-flex gap-5">
+          <button className="btn btn-success btn-sm">Approve</button>
+         <button className="btn btn-danger btn-sm">Reject</button>
+         </div>
           </div>
         </div>
       </div>

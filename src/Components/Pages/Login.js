@@ -1,7 +1,7 @@
 import { useState } from "react" ;
 import {Link,useNavigate} from "react-router-dom"
 import axios from "axios"
-// import "./Login.css"
+import "./Login.css"
 
 
 
@@ -12,10 +12,14 @@ function   Login(){
     const[password,setpassword]=useState("");
     const navigate = useNavigate();
    
+
+    const [loading, setLoading] = useState(false);
+   
     const login = async(e)=>{
             e.preventDefault();
         console.log("Sending login request");
-       
+        try{
+           setLoading(true);
         const response = await axios.post("https://capstonebackend-bh74.onrender.com/login",
             {email:email, password:password}
         )
@@ -37,7 +41,12 @@ function   Login(){
             alert(response.data.message);
         }
    
-
+      }catch (error) {
+    console.log(error);
+    alert("Logging in  failed");
+  } finally {
+    setLoading(false);
+  }
     }
     return(
          <div className="container d-flex justify-content-center align-items-center min-vh-100">
@@ -80,11 +89,9 @@ function   Login(){
             </div>
 
             {/* Button */}
-            <button className="btn btn-primary w-100 mt-2" type="submit" onClick={login}>Login  
-             <span className="spinner-border spinner-border-sm mx-2" aria-hidden="true"></span>
-             <span className="visually-hidden m-2" role="status">Loading...</span>
-            </button> <div className="loader"></div>
-           
+          <button className="btn btn-primary w-100" type="submit" disabled={loading}>
+  {loading ? "Logging  In..." : "Login"}
+</button>
             <div className="checkbox">
             <div className="checkbox2" >
             <input  

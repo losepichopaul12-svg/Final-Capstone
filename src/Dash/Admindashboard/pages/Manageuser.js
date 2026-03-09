@@ -73,7 +73,7 @@ const deleteUser = async(id) => {
         <div className="container max-auto">
         <div className="card shadow-sm">
         <div className="card-body">
-        <h1 className=" text-center fw-bold"> Platfrom Users</h1>
+        <h1 className=" text-center fw-bold heading">Users List</h1>
         <div className="table-responsive-sm">
         <table className="table table-striped table-hover table-bordered align-middle table-padding">
         <thead className="fw-bold text-white text-center table-primary">
@@ -105,32 +105,20 @@ const deleteUser = async(id) => {
 {user.status || "Active"}
 </span>
 </td>
-                   <td>
 
-<button
- className="btn btn-sm btn-warning me-2"
- onClick={()=>blockUser(user._id)}
->
-Block
-</button>
-
-<button
- className="btn btn-sm btn-danger mt-1"
- onClick={()=>deleteUser(user._id)}
->
-Delete
-</button>
-
+<td>
+<button className="btn btn-sm btn-warning me-2" onClick={()=>blockUser(user._id)}>Block</button>
+<button className="btn btn-sm btn-danger mt-1" onClick={()=>deleteUser(user._id)}>Delete</button>
 </td>
-                </tr>
-            ))}
-            </tbody>
-        </table>
-        </div>
-        </div>
-        </div>
-        </div>
-    );
+ </tr>
+ ))}
+ </tbody>
+ </table>
+ </div>
+ </div>
+ </div>
+</div>
+ );
 }
 
 export default ManageUsers;

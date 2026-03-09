@@ -1,49 +1,100 @@
-import {  useState } from "react";
-import axios from 'axios'
+import { useState } from "react"
+import axios from "axios"
+
 function Forgotpassword(){
 
-   
-    const [Email,updateEmail]=useState("");
-   
-   
-    const HandleSubmit=async(e)=>{
-      e.preventDefault();
-    
-      
-    }
-    return(
-      <div className="container d-flex justify-content-center align-items-center min-vh-100 " >
-      <div className="col-md-6 col-lg-5 ">
-      <div className="card shadow p-4 border-0 border-top border-primary border-4 border-0 border-bottom border-primary border-4" >
-        <h3 className="text-center mb-3">Reset New Password</h3>
-        <hr />
+const[email,setEmail]=useState("")
+const[userId,setUserId]=useState("")
+const[newPassword,setNewPassword]=useState("")
 
-        <form onSubmit={HandleSubmit}>
-          
-          {/* enter email */}
-          <div className="mb-3">
-            <label className="form-label">Enter Email</label>
-            <input
-              type="email"
-              className="form-control"
-              placeholder="valencia@gmail.com"
-              value={Email}
-              onChange={(e) =>updateEmail(e.target.value)}
-           required
-            />
-          </div>
+const checkEmail = async ()=>{
 
-       
-          {/* Button */}
-          <button className="btn btn-primary w-100">
-            Send Reset Link
-          </button>
+try{
 
-        </form>
-      </div>
-      </div>
-    </div>
-    );
+const response = await axios.post(
+"https://capstonebackend-bh74.onrender.com/forgot-password",
+{email: email.toLowerCase()}
+)
+
+setUserId(response.data.userId)
+
+alert("Email verified. Enter new password")
+
+}catch(error){
+
+alert("Email not found")
+
 }
 
-export default Forgotpassword;
+}
+
+const resetPassword = async ()=>{
+
+try{
+
+await axios.put(
+`https://capstonebackend-bh74.onrender.com/reset-password/${userId}`,
+{password:newPassword}
+)
+
+alert("Password updated successfully")
+
+}catch(error){
+
+alert("Error resetting password")
+
+}
+
+}
+
+return(
+
+<div className="container mt-5">
+
+<h3>Forgot Password</h3>
+
+<input
+type="email"
+placeholder="Enter your email"
+className="form-control mb-2"
+value={email}
+onChange={(e)=>setEmail(e.target.value)}
+/>
+
+<button
+className="btn btn-primary"
+onClick={checkEmail}
+>
+Verify Email
+</button>
+
+{userId && (
+
+<div className="mt-3">
+
+<input
+type="password"
+placeholder="New Password"
+className="form-control mb-2"
+value={newPassword}
+onChange={(e)=>setNewPassword(e.target.value)}
+/>
+
+<button
+className="btn btn-success"
+onClick={resetPassword}
+>
+Reset Password
+</button>
+
+</div>
+
+)}
+
+</div>
+
+)
+
+}
+
+export default Forgotpassword

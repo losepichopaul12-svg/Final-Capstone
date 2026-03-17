@@ -4,16 +4,20 @@ import { Link } from "react-router-dom";
 import "./Modal.css"
 
 function Findjob(){
+
  const[Jobs,setJobs]=useState([]);
  const[open, setOpen] = useState(false);
  const[applicantname,setapplicantname]=useState("");
  const[applicantemail,setapplicantemail]=useState("");
  const[selectedJob, setSelectedJob] = useState(null);
  
+const remoteUrl = "https://capstonebackend-bh74.onrender.com";
+  const localUrl = "http://localhost:8082";
+
    const [loading, setLoading] = useState(false);
    const newJobs = async () => {
     try {
-      const response = await axios.get("https://capstonebackend-bh74.onrender.com/fetch-jobs");
+      const response = await axios.get(`${remoteUrl}/fetch-alljobs`);
       console.log("Response from backend:", response.data);
       setJobs(response.data.data); 
     } catch (error) {
@@ -28,7 +32,7 @@ function Findjob(){
  const senddetails=async(e)=>{
   e.preventDefault();
    console.log("Form submitted");
-  setOpen(false);
+  
    if(!applicantname || !applicantemail ){
         alert("Please fill all fields required")
         return;
@@ -37,7 +41,7 @@ function Findjob(){
     try{
       setLoading(true);
     console.log("Sending application  data to database API ")
-  const response=await axios.post("https://capstonebackend-bh74.onrender.com/api/sendapplication",
+  const response=await axios.post(`${remoteUrl}/api/sendapplication`,
     {
   jobId: selectedJob._id,
   Jobtitle:selectedJob.Jobtitle,
@@ -47,6 +51,7 @@ function Findjob(){
   )
   console.log("the response from server is: ", response.data);
   alert(response.data.message)
+  setOpen(false);
 }catch (error) {
     console.log(error);
     alert("sending Application failed");
@@ -71,7 +76,7 @@ function Findjob(){
             <hr></hr>
             <h6>Employer  :{Job.Employer}</h6>
             <p className="small mb-1"><strong>Location :</strong>{Job.Location}</p>
-            <p className="small mb-1"><strong>Job type:</strong>{Job.Selected}</p>
+            <p className="small mb-1"><strong>Job type:</strong>{Job.Jobtype}</p>
             <p className="small mb-1"><strong>Deadline Date :</strong>{Job.Date}</p>
             <p className="fw-bold"><strong>Ksh :</strong>{Job.Salary}</p>
             <p className="small text-muted lh-sm mb-2">{Job.Description}</p>
@@ -91,7 +96,7 @@ function Findjob(){
  <div  className="modal custom-modal">
  <div className="">
  <div className="modal-content ">
- <Link to="Application" className="link">view current Application </Link>
+ <Link to="/Application" className="link">view current Application </Link>
  <div className="header">
 <h2 className="modal-title">Application Form</h2>
 <p>Fill the following form correct details to be considered during shortlisting.</p>

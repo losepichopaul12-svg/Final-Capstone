@@ -10,10 +10,12 @@ const[applicantname,setapplicantname]=useState("");
 const[applicantemail,setapplicantemail]=useState("");
 const[selectedJob, setSelectedJob] = useState(null);
 
+const remoteUrl = "https://capstonebackend-bh74.onrender.com";
+  const localUrl = "http://localhost:8082";
 
    const newJobs = async () => {
     try {
-      const response = await axios.get("https://capstonebackend-bh74.onrender.com/fetch-jobs");
+      const response = await axios.get(`${remoteUrl}/fetch-alljobs`);
       console.log("Response from backend:", response.data);
       setJobs(response.data.data); 
     } catch (error) {
@@ -66,7 +68,7 @@ const[selectedJob, setSelectedJob] = useState(null);
             <hr></hr>
             <h6>Employer  :{Job.Employer}</h6>
             <p className="small mb-1"><strong>Location :</strong>{Job.Location}</p>
-            <p className="small mb-1"><strong>Job type:</strong>{Job.Selected}</p>
+            <p className="small mb-1"><strong>Job type:</strong>{Job.Jobtype}</p>
             <p className="small mb-1"><strong>Deadline Date :</strong>{Job.Date}</p>
             <p className="fw-bold"><strong>Ksh :</strong>{Job.Salary}</p>
             <p className="small text-muted lh-sm mb-2">{Job.Description}</p>
@@ -117,7 +119,7 @@ const[selectedJob, setSelectedJob] = useState(null);
               />
             </div>
              <button type="submit"   className="btn btn-success w-100">Send Application 
-             
+      
              </button>
  </form>
  </div>

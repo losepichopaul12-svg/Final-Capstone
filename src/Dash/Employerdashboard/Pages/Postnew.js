@@ -3,11 +3,14 @@ import axios from "axios";
 function Postnew(){
   const[Jobtitle,setJobtitle]=useState("")
   const[Employer,setEmployer]=useState("");
+  const[Employeremail,setEmployeremail]=useState("");
   const[Location,setLocation]=useState("");
   const[Date,setDate]=useState("")
   const[Salary,setSalary]=useState("")
   const[Description,setDescription]=useState("")
   const[Jobtype,setJobtype]=useState("")
+  const remoteUrl = "https://capstonebackend-bh74.onrender.com";
+  const localUrl = "http://localhost:8082";
 
 
 const submitpost= async(e)=>{
@@ -18,8 +21,8 @@ const submitpost= async(e)=>{
   }else
     alert("job post submitted successfully")
 
-    const response= await axios.post("https://capstonebackend-bh74.onrender.com/newpost",{
-      Jobtitle:Jobtitle,Employer:Employer,Location:Location,Jobtype:Jobtype,Date:Date,Salary:Salary,Description:Description
+    const response= await axios.post(`${remoteUrl}/newpost`,{
+      Jobtitle:Jobtitle,Employer:Employer,Employeremail:Employeremail,Location:Location,Jobtype:Jobtype,Date:Date,Salary:Salary,Description:Description
     })
     console.log("the response from the server is ",response)
 }
@@ -45,6 +48,16 @@ const submitpost= async(e)=>{
            placeholder="UNHCR"
            onChange={(e)=>setEmployer(e.target.value)}
             required
+
+            />
+          <label>Employer Email</label>
+          <input type="email" 
+           value={Employeremail} 
+           name="Employereemail"  
+           className="form-control mb-2" 
+           placeholder="UNHCR@gmail.com"
+           onChange={(e)=>setEmployeremail(e.target.value)}
+           required
 
             />
           <label>Location</label>

@@ -45,7 +45,16 @@ console.log("Sending user data to register API ")
   )
   console.log("the response from server is: ", response.data);
   alert(response.data.message)
-  navigate("/EmployerDashboard")
+  
+
+  if(role === "Employer"){
+navigate("/EmployerDashboard")
+}
+
+else if(role === "Jobseeker"){
+navigate("/JobseekerDashboard")
+}
+
   } catch (error) {
     console.log(error);
     alert("Registration failed");

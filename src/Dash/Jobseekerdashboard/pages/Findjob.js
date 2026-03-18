@@ -32,12 +32,23 @@ const remoteUrl = "https://capstonebackend-bh74.onrender.com";
  const senddetails=async(e)=>{
   e.preventDefault();
    console.log("Form submitted");
-  
+
+  const userid = localStorage.getItem("userid")
+   if (!selectedJob) {
+    alert("No job selected");
+    return;
+  }
+console.log("Selected Job:", selectedJob);
+  if (!userid) {
+  alert("Please login first");
+  return;
+}
    if(!applicantname || !applicantemail ){
         alert("Please fill all fields required")
         return;
 
     }
+    
     try{
       setLoading(true);
     console.log("Sending application  data to database API ")
@@ -46,15 +57,16 @@ const remoteUrl = "https://capstonebackend-bh74.onrender.com";
   jobId: selectedJob._id,
   Jobtitle:selectedJob.Jobtitle,
   applicantname:applicantname,
-  applicantemail:applicantemail
+  applicantemail:applicantemail,
+  userid
     }
   )
   console.log("the response from server is: ", response.data);
   alert(response.data.message)
   setOpen(false);
 }catch (error) {
-    console.log(error);
-    alert("sending Application failed");
+    console.log("ERROR:", error.response?.data || error.message);
+  alert(error.response?.data?.message || "sending Application failed");
   } finally {
     setLoading(false);
   }

@@ -20,9 +20,9 @@ const submitpost= async(e)=>{
     return;
   }else
     alert("job post submitted successfully")
-
+const userid = localStorage.getItem("userid");
     const response= await axios.post(`${remoteUrl}/newpost`,{
-      Jobtitle:Jobtitle,Employer:Employer,Employeremail:Employeremail,Location:Location,Jobtype:Jobtype,Date:Date,Salary:Salary,Description:Description
+      Jobtitle:Jobtitle,Employer:Employer,Employeremail:Employeremail,Location:Location,Jobtype:Jobtype,Date:Date,Salary:Salary,Description:Description,userid
     })
     console.log("the response from the server is ",response)
 }
@@ -100,7 +100,7 @@ const submitpost= async(e)=>{
           required
           />
           <label>Job description</label>
-          <textarea  class="form-control mb-2" rows="5" 
+          <textarea  className="form-control mb-2" rows="5" 
           value={Description} 
           name="description"
           placeholder="type Job description to this textarea"

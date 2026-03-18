@@ -28,14 +28,17 @@ function   Login(){
         if(response.data.status === "00" && response.data.role ==="Employer"){
           
           localStorage.setItem("usertoken", response.data.token); //token stored after being generated 
+          localStorage.setItem("userid", response.data.id);
             navigate("/EmployerDashboard");
         }
         else if(response.data.status ==="00" && response.data.role ==="Jobseeker"){
                localStorage.setItem("usertoken", response.data.token); //token stored after being generated 
+               localStorage.setItem("userid", response.data.id);
             navigate("/JobseekerDashboard");
         }
         else if(response.data.status ==="00" && response.data.role ==="Admin"){
                 localStorage.setItem("usertoken", response.data.token); //token stored after being generated 
+                localStorage.setItem("userid", response.data.id);
             navigate("/AdminDashboard");
         }
         else{

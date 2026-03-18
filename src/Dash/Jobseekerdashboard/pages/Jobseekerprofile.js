@@ -26,8 +26,8 @@ function Jobseekerprofile(){
       phone:phone,
       biodata:biodata,
       skills:skills,
-      portfolio:portfolio,
-      cvurl:cvurl
+      portfolio:portfolio?.name,
+      cvurl:cvurl?.name
     })
       console.log("the response from server is: ", response.data);
   alert(response.data.message);

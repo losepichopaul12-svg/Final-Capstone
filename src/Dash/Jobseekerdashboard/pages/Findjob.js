@@ -55,7 +55,6 @@ console.log("Selected Job:", selectedJob);
   const response=await axios.post(`${remoteUrl}/api/sendapplication`,
     {
   jobId: selectedJob._id,
-  Jobtitle:selectedJob.Jobtitle,
   applicantname:applicantname,
   applicantemail:applicantemail,
   userid
@@ -65,8 +64,9 @@ console.log("Selected Job:", selectedJob);
   alert(response.data.message)
   setOpen(false);
 }catch (error) {
-    console.log("ERROR:", error.response?.data || error.message);
-  alert(error.response?.data?.message || "sending Application failed");
+     console.log("FULL ERROR:", error.response?.data || error.message);  
+     alert(error.response?.data?.message || "Sending application failed");
+
   } finally {
     setLoading(false);
   }

@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 
 function Jobs (){
 const[Jobs,setJobs]=useState([]);
-const[open, setOpen] = useState(false);
-const[applicantname,setapplicantname]=useState("");
-const[applicantemail,setapplicantemail]=useState("");
-const[selectedJob, setSelectedJob] = useState(null);
-
+ const[open, setOpen] = useState(false);
+ const[applicantname,setapplicantname]=useState("");
+ const[applicantemail,setapplicantemail]=useState("");
+ const[selectedJob, setSelectedJob] = useState(null);
+ 
 const remoteUrl = "https://capstonebackend-bh74.onrender.com";
-  const localUrl = "http://localhost:8082";
+const localUrl = "http://localhost:8082";
 
+   const [loading, setLoading] = useState(false);
    const newJobs = async () => {
     try {
       const response = await axios.get(`${remoteUrl}/fetch-alljobs`);
@@ -27,28 +28,47 @@ const remoteUrl = "https://capstonebackend-bh74.onrender.com";
   newJobs()
  },[]);
 
-
  const senddetails=async(e)=>{
   e.preventDefault();
    console.log("Form submitted");
-  setOpen(false);
+
+  const userid = localStorage.getItem("userid")
+   if (!selectedJob) {
+    alert("No job selected");
+    return;
+  }
+console.log("Selected Job:", selectedJob);
+  if (!userid) {
+  alert("Please login first");
+  return;
+}
    if(!applicantname || !applicantemail ){
         alert("Please fill all fields required")
         return;
 
     }
+    
+    try{
+      setLoading(true);
     console.log("Sending application  data to database API ")
-  const response=await axios.post("https://capstonebackend-bh74.onrender.com/api/sendapplication",
+  const response=await axios.post(`${remoteUrl}/api/sendapplication`,
     {
   jobId: selectedJob._id,
-  Jobtitle:selectedJob.Jobtitle,
   applicantname:applicantname,
-  applicantemail:applicantemail
+  applicantemail:applicantemail,
+  userid
     }
   )
   console.log("the response from server is: ", response.data);
   alert(response.data.message)
+  setOpen(false);
+}catch (error) {
+     console.log("FULL ERROR:", error.response?.data || error.message);  
+     alert(error.response?.data?.message || "Sending application failed");
 
+  } finally {
+    setLoading(false);
+  }
  }
 
     return(
@@ -118,9 +138,10 @@ const remoteUrl = "https://capstonebackend-bh74.onrender.com";
                 required
               />
             </div>
-             <button type="submit"   className="btn btn-success w-100">Send Application 
-      
-             </button>
+             
+             <button className="btn btn-success w-100" type="submit" disabled={loading}>
+  {loading ? "sending   In..." : "Send Application"}
+</button>
  </form>
  </div>
 </div>

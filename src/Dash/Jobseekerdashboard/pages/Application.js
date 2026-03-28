@@ -4,34 +4,29 @@ import axios from "axios";
 function Application(){
 
 const [Applications,setApplications] = useState([]);
+const remoteUrl = "https://capstonebackend-bh74.onrender.com";
+const localUrl = "http://localhost:8082";
 
-useEffect(() => {
 
-const fetchApplications = async () => {
+const fetchMyApplications = async () => {
+  try {
+    const response = await axios.get(`${remoteUrl}/jobseeker/myapplications`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("usertoken")}`
+      }
+    });
 
-try{
+    console.log("My applications:", response.data);
+    setApplications(response.data.data);
 
-const token = localStorage.getItem("token");
-const email = localStorage.getItem("email");
-
-const response = await axios.get(
-`https://capstonebackend-bh74.onrender.com/application/myapplications/${email}`,
-{
-headers:{ Authorization:`Bearer ${token}` }
-}
-);
-
-setApplications(response.data);
-
-}catch(err){
-console.error("Failed to fetch applications",err);
-}
-
+  } catch (error) {
+    console.error(error.response?.data || error.message);
+  }
 };
 
-fetchApplications();
-
-},[]);
+useEffect(() => {
+  fetchMyApplications();
+}, []);
 
 return(
 

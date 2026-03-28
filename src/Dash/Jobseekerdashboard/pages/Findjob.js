@@ -1,6 +1,5 @@
 import { useState,useEffect } from "react";
 import axios from "axios"
-import { Link } from "react-router-dom";
 import "./Modal.css"
 
 function Findjob(){
@@ -108,7 +107,7 @@ console.log("Selected Job:", selectedJob);
  <div  className="modal custom-modal">
  <div className="">
  <div className="modal-content ">
- <Link to="/Application" className="link">view current Application </Link>
+ 
  <div className="header">
 <h2 className="modal-title">Application Form</h2>
 <p>Fill the following form correct details to be considered during shortlisting.</p>

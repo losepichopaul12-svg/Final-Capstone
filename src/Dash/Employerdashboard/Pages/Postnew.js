@@ -13,19 +13,43 @@ function Postnew(){
   const localUrl = "http://localhost:8082";
 
 
-const submitpost= async(e)=>{
+const submitpost = async (e) => {
   e.preventDefault();
-  if(!Jobtitle ||!Employer||!Location||!Jobtype||!Date){
-    alert("Input proper job details and proceed to post")
+
+  if (!Jobtitle || !Employer || !Location || !Jobtype || !Date) {
+    alert("Input proper job details and proceed to post");
     return;
-  }else
-    alert("job post submitted successfully")
+  }
 const userid = localStorage.getItem("userid");
-    const response= await axios.post(`${remoteUrl}/newpost`,{
-      Jobtitle:Jobtitle,Employer:Employer,Employeremail:Employeremail,Location:Location,Jobtype:Jobtype,Date:Date,Salary:Salary,Description:Description,userid
-    })
-    console.log("the response from the server is ",response)
-}
+  try {
+    const response = await axios.post(
+      `${remoteUrl}/newpost`,
+      {
+        Jobtitle:Jobtitle,
+        Employer:Employer,
+        Employeremail:Employeremail,
+        Location:Location,
+        Jobtype:Jobtype,
+        Date: Date,
+        Salary: Salary,
+        Description:Description,
+        userid
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("usertoken")}`
+        }
+      }
+    );
+
+    console.log("response:", response.data);
+    alert(response.data.message);
+
+  } catch (error) {
+    console.log(error.response?.data || error.message);
+    alert("Failed to post job");
+  }
+};
 
     return(
        <div className="container my-3">
@@ -107,7 +131,7 @@ const userid = localStorage.getItem("userid");
           onChange={(e)=>setDescription(e.target.value)}
           required
           ></textarea>
-          <button onClick={submitpost}className="btn btn-success" >
+          <button className="btn btn-success" >
             Post Job
           </button>
         </form>

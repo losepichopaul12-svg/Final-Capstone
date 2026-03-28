@@ -4,10 +4,19 @@ import axios from "axios";
 function Applicantlist(){ 
   
   const[Applications,setApplications]=useState([]);
+  const remoteUrl = "https://capstonebackend-bh74.onrender.com";
+const localUrl = "http://localhost:8082";
+
    const newapplicants = async () => {
     console.log("fetching jobs applicants list from the database")
     try {
-      const response = await axios.get("https://capstonebackend-bh74.onrender.com/Api/getapplicant");
+      const response = await axios.get(`${remoteUrl}/Api/getapplicant`,
+         {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("usertoken")}`
+      }
+    }
+      );
       console.log("Response from backend:", response.data);
       setApplications(response.data.data); 
     } catch (error) {
